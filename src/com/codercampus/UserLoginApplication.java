@@ -5,26 +5,21 @@ import java.util.Scanner;
 
 public class UserLoginApplication {
 
-	public static User[] users;
-
 	public static void main(String[] args) throws IOException {
 
 		UserService userService = new UserService();
-
-		String[] lines = userService.readFile("data.txt");
-		users = userService.createUserArray(lines);
-
+		userService.populateUsersFromFile("data.txt");
 		Scanner sc = new Scanner(System.in);
 
 		try {
 			int loginCtr = 0;
-			while (loginCtr < 6) {
+			while (loginCtr < 5) {
 				System.out.println("Enter your email: ");
 				String username = sc.nextLine();
 				System.out.println("Enter your password: ");
 				String password = sc.nextLine();
 
-				User validUser = userService.defineValidUser(username, password);
+				User validUser = userService.getUserByUsernameAndPassword(username, password);
 
 				if (validUser != null) {
 					System.out.println("Welcome " + validUser.getName());
