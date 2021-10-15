@@ -25,7 +25,7 @@ public class UserLoginApplication {
 					System.out.println("Welcome " + validUser.getName());
 					System.exit(0);
 				} else {
-					System.out.println("Invalid login, please try again. ");
+					System.out.println("Invalid login or password, please try again. ");
 					loginCtr++;
 					if (loginCtr == 5) {
 						System.out.println("Too many failed login attempts, you are now locked out.");
